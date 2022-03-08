@@ -18,7 +18,7 @@ public class testaCalc {
 
     //3- validar
     System.out.println("O resultado Esperado eh:"+ resultadoEsperado +"\n O resultado Atual foi: "+ resultadoAtual);
-        assertEquals(resultadoEsperado, resultadoAtual);
+        assertEquals(resultadoAtual, resultadoEsperado);
 
     }
     @Test
@@ -33,7 +33,7 @@ public class testaCalc {
 
         //3- validar
         System.out.println("O resultado Esperado eh:"+ resultadoEsperado +"\n O resultado Atual foi: "+ resultadoAtual);
-        assertEquals(resultadoEsperado, resultadoAtual);}
+        assertEquals(resultadoAtual, resultadoEsperado);}
     @Test
     //1 -given configurar
     public void testarMultiplicarDoisNumeros(){
@@ -46,18 +46,18 @@ public class testaCalc {
 
         //3- validar
         System.out.println("O resultado Esperado eh:"+ resultadoEsperado +"\n O resultado Atual foi: "+ resultadoAtual);
-        assertEquals(resultadoEsperado, resultadoAtual);}
+        assertEquals(resultadoAtual, resultadoEsperado);}
     @Test
     //1 -given configurar
     public void testarDividrDoisNumeros(){
         int num1 = 5;
-        int num2 = 0;
-        int resultadoEsperado = 0;
+        int num2 = 1;
+        int resultadoEsperado = 5;
 
         // 2 - executar
         int resultadoAtual = Calc.dividirDoisNumeros(num1, num2);
 
         //3- validar
         System.out.println("O resultado Esperado eh:"+ resultadoEsperado +"\n O resultado Atual foi: "+ resultadoAtual);
-        assertEquals(resultadoEsperado, resultadoAtual);}
+        assertEquals(resultadoAtual, resultadoEsperado);}
     }
