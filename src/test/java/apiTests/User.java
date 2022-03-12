@@ -20,13 +20,14 @@ public class User {
     String appjson = "application/json";
     int petId = 1030;
     int userId = 2200;
-    String username = "martini";
+    String username = "bmartini";
+
 
     public String lerJson(String caminhoJson) throws IOException {
 
         return new String(Files.readAllBytes(Paths.get((caminhoJson))));
     }
-    @Test
+    @Test (priority = 0)
     public void incluirUser() throws IOException {
         String jsonBody = lerJson("src/test/resources/data/user.json");
         given()
@@ -45,7 +46,7 @@ public class User {
                 ;
 
     }
-    @Test
+    @Test(priority = 1,dependsOnMethods = {"incluirUser"})
     public void consultarUser(){
         given()
                 .contentType(appjson)
@@ -60,7 +61,7 @@ public class User {
         ;
 
     }
-    @Test
+    @Test(priority = 2, dependsOnMethods = {"consultarUser"})
     public void alterarUser() throws IOException {
         String jsonBody = lerJson("src/test/resources/data/newuser.json");
         given()
@@ -72,10 +73,10 @@ public class User {
             .then()
                 .statusCode(200)
                 .log().all()
-                .body("username",is("martini"))
+                .body("message", is(Integer.toString(userId)))
         ;
     }
-    @Test
+    @Test(priority = 3,dependsOnMethods = {"alterarUser"})
     public void deletarUser(){
         given()
                 .contentType("application/json")
@@ -84,7 +85,7 @@ public class User {
                 .delete(uri + "/" + username)
                 .then()
                 .log().all()
-                .statusCode(404)
+                .statusCode(200)
 
         ;
     }

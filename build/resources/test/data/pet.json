@@ -1,0 +1,18 @@
+{
+  "id": 1030,
+  "category": {
+    "id": 1,
+    "name": "cat"
+  },
+  "name": "mumi",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "animal vermifugado na primeira semana"
+    }
+  ],
+  "status": "available"
+}
