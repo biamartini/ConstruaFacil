@@ -1,6 +1,7 @@
 package apiTests;
 
 
+import groovy.json.JsonOutput;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.ValidatableResponse;
 import org.hamcrest.CoreMatchers;
@@ -21,6 +22,8 @@ public class User {
     int petId = 1030;
     int userId = 2200;
     String username = "bmartini";
+    String password = "123456";
+    String token = "";
 
 
     public String lerJson(String caminhoJson) throws IOException {
@@ -77,7 +80,7 @@ public class User {
         ;
     }
     @Test(priority = 3,dependsOnMethods = {"alterarUser"})
-    public void deletarUser(){
+    public void deletarUser() {
         given()
                 .contentType("application/json")
                 .log().all()
@@ -89,4 +92,30 @@ public class User {
 
         ;
     }
-   }
+    @Test
+        public void login(){
+String mensagem =
+
+
+            given()
+                    .contentType(appjson)
+                    .log().all()
+
+                .when()
+                    .get(uri + "/login?username="+ username + "&password=" + password)
+
+                .then()
+                    .log().all()
+                    .statusCode(200)
+                    .body("code",is(200))
+                    .body("type",is("unknown"))
+                .extract()
+                    .path("message");
+
+System.out.println("a mensagem e:"+ mensagem);
+        token = mensagem.substring(23);
+        System.out.println("o token e:" + token);
+
+                    }
+
+    }
